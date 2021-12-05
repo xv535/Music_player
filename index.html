@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="Assets/img/favicon/favicon.svg" type="image/favicon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Music Player</title>
+</head>
+
+<body>
+
+    <audio src="" id="audio-source" preload="metadata"></audio>
+
+    <section class="home-section">
+        <!-- carusel -->
+        <div class="carousel">
+            <img src="Assets/img/atomic.webp" class="active" alt="">
+            <img src="Assets/img/radiotapok.jpg" alt="">
+            <img src="Assets/img/snow.jpg" alt="">
+            <img src="Assets/img/lilnas.jpg" alt="">
+            <img src="Assets/img/otherside.jpg" alt="">
+        </div>
+        <!-- carusel end-->
+
+        <h1 class="heading">recently played</h1>
+        <div class="playlists-group">
+            <div class="playlist-card">
+                <img src="Assets/img/atomic.webp" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">top international</p>
+            </div>
+            <div class="playlist-card">
+                <img src="Assets/img/radiotapok.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">BTS collection</p>
+            </div>
+            <div class="playlist-card">
+                <img src="Assets/img/snow.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">BTS collection</p>
+            </div>
+            <div class="playlist-card">
+                <img src="Assets/img/lilnas.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">BTS collection</p>
+            </div>
+            <div class="playlist-card">
+                <img src="Assets/img/otherside.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">BTS collection</p>
+            </div>
+
+        </div>
+        <h1 class="heading">based on your listening</h1>
+        <div class="playlists-group">
+            <div class="playlist-card">
+                <img src="Assets/img/lilnas.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">top international</p>
+            </div>
+            <div class="playlist-card">
+                <img src="Assets/img/radiotapok.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">BTS collection</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Player -->
+    <section class="music-player-section">
+
+        <!-- <img src="Assets/img/btn/back.png" class="back-btn icon hide" alt=""> -->
+        <i class="fas fa-angle-left back-btn icon hide"></i>
+        <!-- <img src="Assets/img/btn/nav.png" class="nav-btn icon " alt=""> -->
+        <i class="fas fa-ellipsis-v nav-btn icon hide"></i>
+
+        <h1 class="current-song-name">old town road</h1>
+        <p class="artist-name ">lil nas x</p>
+
+        <img src="Assets/img/lilnas.jpg" class="cover hide" alt="">
+
+        <div class="seek-bar-container">
+            <input type="range" class="music-seek-bar" value="0">
+            <p class="current-time hide">00 : 00</p>
+            <p class="duration hide">00 : 00</p>
+        </div>
+
+        <div class="controls">
+            <span class="fas fa-redo-alt"></span>
+            <div class="main">
+                <i class="fas fa-backward active"></i>
+                <i class="fas fa-play active"></i>
+                <i class="fas fa-pause "></i>
+                <i class="fas fa-forward active"></i>
+            </div>
+            <input type="range" class="volume-slider " max="1" value="1" step="0.1" >
+            <span class="fas fa-volume-up"></span>
+        </div>
+    </section>
+
+    <!-- Playlist section -->
+    <section class="playlist">
+
+        <i class="fas fa-angle-left back-btn icon hide"></i>
+        
+        <h1 class="title">playlist</h1>
+        
+        <div class="queue active">
+            <div class="queue-cover">
+                <img src="Assets/img/atomic.webp" alt="">
+                <i class="fas fa-pause"></i>
+            </div>
+            <p class="name">Sweet Baby</p>
+        </div>
+        <div class="queue active">
+            <div class="queue-cover">
+                <img src="Assets/img/radiotapok.jpg" alt="">
+                <i class="fas fa-pause"></i>
+            </div>
+            <p class="name">old town road</p>
+        </div>
+        <div class="queue active">
+            <div class="queue-cover">
+                <img src="Assets/img/snow.jpg" alt="">
+                <i class="fas fa-pause"></i>
+            </div>
+            <p class="name">Snow (Hey Oh)</p>
+        </div>
+        <div class="queue active">
+            <div class="queue-cover">
+                <img src="Assets/img/otherside.jpg" alt="">
+                <i class="fas fa-pause"></i>
+            </div>
+            <p class="name">Otherside</p>
+        </div>
+        <div class="queue active">
+            <div class="queue-cover">
+                <img src="Assets/img/lilnas.jpg" alt="">
+                <i class="fas fa-pause"></i>
+            </div>
+            <p class="name">Old Town Road</p>
+        </div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+    <script type="module" src="data.js"></script>
+</body>
+
+</html>
