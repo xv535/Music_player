@@ -17,13 +17,13 @@
 
     <section class="home-section">
         <!-- carusel -->
-        <div class="carousel">
+        <!-- <div class="carousel">
             <img src="Assets/img/atomic.webp" class="active" alt="">
             <img src="Assets/img/radiotapok.jpg" alt="">
             <img src="Assets/img/snow.jpg" alt="">
             <img src="Assets/img/lilnas.jpg" alt="">
             <img src="Assets/img/otherside.jpg" alt="">
-        </div>
+        </div> -->
         <!-- carusel end-->
 
         <h1 class="heading">recently played</h1>
@@ -77,11 +77,13 @@
 
         <img src="Assets/img/lilnas.jpg" class="cover hide" alt="">
 
+<!-- seek-bar -->
         <div class="seek-bar-container">
             <input type="range" class="music-seek-bar" value="0">
             <p class="current-time hide">00 : 00</p>
             <p class="duration hide">00 : 00</p>
         </div>
+<!-- end  -->
 
         <div class="controls">
             <span class="fas fa-redo-alt"></span>
@@ -91,8 +93,10 @@
                 <i class="fas fa-pause "></i>
                 <i class="fas fa-forward active"></i>
             </div>
+<!-- volume -->
             <input type="range" class="volume-slider " max="1" value="1" step="0.1" >
             <span class="fas fa-volume-up"></span>
+<!-- end -->
         </div>
     </section>
 
@@ -103,41 +107,7 @@
         
         <h1 class="title">playlist</h1>
         
-        <div class="queue active">
-            <div class="queue-cover">
-                <img src="Assets/img/atomic.webp" alt="">
-                <i class="fas fa-pause"></i>
-            </div>
-            <p class="name">Sweet Baby</p>
-        </div>
-        <div class="queue active">
-            <div class="queue-cover">
-                <img src="Assets/img/radiotapok.jpg" alt="">
-                <i class="fas fa-pause"></i>
-            </div>
-            <p class="name">old town road</p>
-        </div>
-        <div class="queue active">
-            <div class="queue-cover">
-                <img src="Assets/img/snow.jpg" alt="">
-                <i class="fas fa-pause"></i>
-            </div>
-            <p class="name">Snow (Hey Oh)</p>
-        </div>
-        <div class="queue active">
-            <div class="queue-cover">
-                <img src="Assets/img/otherside.jpg" alt="">
-                <i class="fas fa-pause"></i>
-            </div>
-            <p class="name">Otherside</p>
-        </div>
-        <div class="queue active">
-            <div class="queue-cover">
-                <img src="Assets/img/lilnas.jpg" alt="">
-                <i class="fas fa-pause"></i>
-            </div>
-            <p class="name">Old Town Road</p>
-        </div>
+
     </section>
 
     <script type="module" src="app.js"></script>

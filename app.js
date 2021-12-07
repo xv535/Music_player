@@ -2,8 +2,9 @@
 
 import tracks from "./data.js";
 
-const carousel = [...document.querySelectorAll('.carousel img')],//! 
-    musicPlayerSection = document.querySelector('.music-player-section'),
+const log = console.log.bind(document);
+
+const  musicPlayerSection = document.querySelector('.music-player-section'),
     backToHomeBtn = document.querySelector('.music-player-section .back-btn'),
     playlist = document.querySelector('.playlist'),
     navBtn = document.querySelector('.music-player-section .nav-btn'),
@@ -11,6 +12,23 @@ const carousel = [...document.querySelectorAll('.carousel img')],//!
 
 ///////   Carousel   /////////////
 let carouselIndex = 0;
+
+function createCaruselItem() {
+    const carouselElem = document.createElement('div');
+    carouselElem.classList.add("carousel");
+    
+    tracks.forEach((item, i) => {
+        carouselElem.innerHTML += `
+        <img src="${item.cover}"  alt="">
+        `;
+        document.querySelector(".home-section").prepend(carouselElem);
+    });
+}
+createCaruselItem();
+
+const carousel = [...document.querySelectorAll('.carousel img')];//! 
+carousel[0].classList.add('active');
+
 
 const changeCarousel = () => {
     carousel[carouselIndex].classList.toggle('active');
@@ -67,7 +85,7 @@ const coverImage = document.querySelector('.cover');
 const currentMusicTime = document.querySelector('.current-time');
 const musicDuration = document.querySelector('.duration');
 
-const queue = [...document.querySelectorAll('.queue')];
+
 
 let currentMusic = 0;
 
@@ -77,18 +95,38 @@ const forwardBtn = document.querySelector('i.fa-forward');
 const backwardBtn = document.querySelector('i.fa-backward');
 const playBtn = document.querySelector('i.fa-play');
 const pauseBtn = document.querySelector('i.fa-pause');
-const repeatBtn = document.querySelector('span.fa-redo');
+const repeatBtn = document.querySelector('span.fa-redo-alt');
 const volumeBtn = document.querySelector('span.fa-volume-up');
 const volumeSlider = document.querySelector('.volume-slider');
 
+
+function createPlaylist() {
+
+    tracks.forEach((item, i) => {
+        const elem = document.createElement('div');
+        elem.classList.add("queue");
+        elem.innerHTML += `
+        <div class="queue-cover">
+            <img src="${item.cover}" alt="">
+            <i class="fas fa-pause"></i>
+        </div>
+        <p class="name">${item.title}</p>
+        `;
+        document.querySelector(".playlist").append(elem);
+    });
+}
+createPlaylist();
+
+
+const queue = [...document.querySelectorAll('.queue')];
 // set up default track 
 const setTrack = (i) => {
+    
     seekBar.value = 0;
     let track = tracks[i];
     currentMusic = i;
 
     music.src = track.src;
-
     songName.innerHTML = track.title;
     artistName.innerHTML = track.artist;
     coverImage.src = track.cover;
@@ -96,7 +134,7 @@ const setTrack = (i) => {
     setTimeout(() => {
         seekBar.max = music.duration;
         musicDuration.innerHTML = formatTime(music.duration);
-    }, 300);
+    }, 200);
     currentMusicTime.innerHTML = '00 : 00';
     queue.forEach(item => item.classList.remove('active'));
     queue[currentMusic].classList.add('active');
@@ -104,15 +142,17 @@ const setTrack = (i) => {
 
 function formatTime(time) {
     let min = Math.floor(time / 60);
-    if(min < 10) {
-       min =  `0` + min;
+    if (min < 10) {
+        min = `0` + min;
     }
     let sec = Math.floor(time % 60);
-    if(sec < 10) {
-        sec =  `0` + sec;
-     }
-     return `${min} : ${sec}`;
+    if (sec < 10) {
+        sec = `0` + sec;
+    }
+    return `${min} : ${sec}`;
 }
+
+
 
 function playMusic(track) {
     playBtn.addEventListener('click', () => {
@@ -132,7 +172,7 @@ function pauseMusic() {
 
 forwardBtn.addEventListener('click', () => {
     if (currentMusic < tracks.length - 1) {
-        currentMusic ++;
+        currentMusic++;
     } else {
         currentMusic = 0;
     }
@@ -140,17 +180,67 @@ forwardBtn.addEventListener('click', () => {
     playBtn.click();
 });
 backwardBtn.addEventListener('click', () => {
-    if (currentMusic == 0) {
-        currentMusic  = tracks.length - 1;
+    if (currentMusic <= 0) {
+        currentMusic = tracks.length - 1;
     } else {
-        currentMusic --;
+        currentMusic--;
     }
     setTrack(currentMusic);
     playBtn.click();
 });
 
+// seekbar events
+setInterval(() => {
+    seekBar.value = music.currentTime;
+    currentMusicTime.innerHTML = formatTime(music.currentTime);
 
+    if (music.currentTime == seekBar.max) {
+        if (repeatBtn.className.includes("active")) {
+            setTrack(currentMusic);
+            playBtn.click();
+        } else {
+            forwardBtn.click();
+        }
+    }
+}, 500);
+
+seekBar.addEventListener("change", () => {
+    music.currentTime = seekBar.value;
+});
+
+repeatBtn.addEventListener("click", () => {
+    repeatBtn.classList.toggle("active");
+});
+
+volumeBtn.addEventListener("click", () => {
+    volumeBtn.classList.toggle("active");
+    volumeSlider.classList.toggle("active");
+});
+
+setInterval(() => {
+    if (volumeBtn.classList.contains("active")) {
+        volumeBtn.classList.remove("active");
+        volumeSlider.classList.remove("active");
+    }
+}, 10000);
+
+volumeSlider.addEventListener("input", () => {
+    music.volume = volumeSlider.value;
+});
+
+queue.forEach((item, i) => {
+    item.addEventListener("click", () => {
+        if (!item.classList.contains("active")) {
+            // item.classList.add("active");
+            setTrack(i);
+            playBtn.click();
+        } else {
+            pauseBtn.click();
+            item.classList.remove("active");
+        }
+    });
+});
 
 playMusic();
-pauseMusic(); 
+pauseMusic();
 setTrack(0);

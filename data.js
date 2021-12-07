@@ -26,6 +26,12 @@
         cover:"Assets/img/radiotapok.jpg",
     },
     {
+        title: " Wrong Side Of Heaven",
+        artist:"Five Finger Death Punch",
+        src: "Assets/musics/Five Finger Death Punch - Wrong Side Of Heaven (Acoustic).mp3",
+        cover:"Assets/img/Five-Finger-Death-Punch-A-Decade-of-Destruction-Vol.-2.jpg",
+    },
+    {
         title: "Old Town Road",
         artist:"Lil Nas X",
         src: "Assets/musics/Lil Nas X - Old Town Road.mp3",
